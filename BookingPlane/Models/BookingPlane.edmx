@@ -1,0 +1,934 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VIPProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="db_Booking">
+          <Key>
+            <PropertyRef Name="IDBK" />
+          </Key>
+          <Property Name="IDBK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="IDCB" Type="int" />
+          <Property Name="IDV" Type="int" />
+          <Property Name="NgayDat" Type="datetime" Nullable="false" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TongGia" Type="float" Nullable="false" />
+          <Property Name="SoHanhKhack" Type="int" Nullable="false" />
+          <Property Name="KhuyenMai" Type="int" />
+        </EntityType>
+        <EntityType Name="db_Checkin">
+          <Key>
+            <PropertyRef Name="IDCKin" />
+          </Key>
+          <Property Name="IDCKin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDBK" Type="int" />
+          <Property Name="IDHK" Type="int" />
+          <Property Name="GioCI" Type="datetime" />
+          <Property Name="SoGhe" Type="nvarchar" MaxLength="10" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="db_ChoNgoi">
+          <Key>
+            <PropertyRef Name="IDCN" />
+          </Key>
+          <Property Name="IDCN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCB" Type="int" />
+          <Property Name="SoGhe" Type="nvarchar" MaxLength="10" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="IDHK" Type="int" />
+        </EntityType>
+        <EntityType Name="db_ChuongTrinhKhuyenMai">
+          <Key>
+            <PropertyRef Name="IDKM" />
+          </Key>
+          <Property Name="IDKM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKM" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IDCB" Type="int" />
+          <Property Name="IDUser" Type="int" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="NgayBatDau" Type="datetime" Nullable="false" />
+          <Property Name="NgayKetThuc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="db_ChuyenBay">
+          <Key>
+            <PropertyRef Name="IDCB" />
+          </Key>
+          <Property Name="IDCB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SoHieu" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SanBayDi" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="SanBayDen" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="NgayGioKhoiHanh" Type="datetime" Nullable="false" />
+          <Property Name="NgayGioDen" Type="datetime" Nullable="false" />
+          <Property Name="SoVeConLai" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="db_DieuKhoan">
+          <Key>
+            <PropertyRef Name="IDDK" />
+          </Key>
+          <Property Name="IDDK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="db_HanhKhach">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDBK" Type="int" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GioiTinh" Type="bit" />
+          <Property Name="HoChieu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="db_PTTT">
+          <Key>
+            <PropertyRef Name="IDPT" />
+          </Key>
+          <Property Name="IDPT" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="IDUser" Type="int" />
+          <Property Name="IDBK" Type="int" />
+          <Property Name="TenPT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChiTiet" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="db_SanBay">
+          <Key>
+            <PropertyRef Name="IDSB" />
+          </Key>
+          <Property Name="IDSB" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenSB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThanhPho" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="db_User">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiemTichLuy" Type="int" />
+        </EntityType>
+        <EntityType Name="db_Ve">
+          <Key>
+            <PropertyRef Name="IDV" />
+          </Key>
+          <Property Name="IDV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiVe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GiaVe" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDCB" Type="int" />
+        </EntityType>
+        <Association Name="FK_B_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B_User">
+          <End Role="db_User" Type="Self.db_User" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_User">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B_Ve">
+          <End Role="db_Ve" Type="Self.db_Ve" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Ve">
+              <PropertyRef Name="IDV" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="IDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BK_KM">
+          <End Role="db_ChuongTrinhKhuyenMai" Type="Self.db_ChuongTrinhKhuyenMai" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuongTrinhKhuyenMai">
+              <PropertyRef Name="IDKM" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="KhuyenMai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CK_BK">
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="0..1" />
+          <End Role="db_Checkin" Type="Self.db_Checkin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Booking">
+              <PropertyRef Name="IDBK" />
+            </Principal>
+            <Dependent Role="db_Checkin">
+              <PropertyRef Name="IDBK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CK_HK">
+          <End Role="db_HanhKhach" Type="Self.db_HanhKhach" Multiplicity="0..1" />
+          <End Role="db_Checkin" Type="Self.db_Checkin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_HanhKhach">
+              <PropertyRef Name="IDKH" />
+            </Principal>
+            <Dependent Role="db_Checkin">
+              <PropertyRef Name="IDHK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CN_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_ChoNgoi" Type="Self.db_ChoNgoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_ChoNgoi">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HK_BK">
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="0..1" />
+          <End Role="db_HanhKhach" Type="Self.db_HanhKhach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Booking">
+              <PropertyRef Name="IDBK" />
+            </Principal>
+            <Dependent Role="db_HanhKhach">
+              <PropertyRef Name="IDBK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KM_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_ChuongTrinhKhuyenMai" Type="Self.db_ChuongTrinhKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_ChuongTrinhKhuyenMai">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KM_User">
+          <End Role="db_User" Type="Self.db_User" Multiplicity="0..1" />
+          <End Role="db_ChuongTrinhKhuyenMai" Type="Self.db_ChuongTrinhKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_User">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="db_ChuongTrinhKhuyenMai">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_BK">
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="0..1" />
+          <End Role="db_PTTT" Type="Self.db_PTTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Booking">
+              <PropertyRef Name="IDBK" />
+            </Principal>
+            <Dependent Role="db_PTTT">
+              <PropertyRef Name="IDBK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_User">
+          <End Role="db_User" Type="Self.db_User" Multiplicity="0..1" />
+          <End Role="db_PTTT" Type="Self.db_PTTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_User">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="db_PTTT">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SBD_SB">
+          <End Role="db_SanBay" Type="Self.db_SanBay" Multiplicity="1" />
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_SanBay">
+              <PropertyRef Name="IDSB" />
+            </Principal>
+            <Dependent Role="db_ChuyenBay">
+              <PropertyRef Name="SanBayDen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SBDi_SB">
+          <End Role="db_SanBay" Type="Self.db_SanBay" Multiplicity="1" />
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_SanBay">
+              <PropertyRef Name="IDSB" />
+            </Principal>
+            <Dependent Role="db_ChuyenBay">
+              <PropertyRef Name="SanBayDi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VE_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_Ve" Type="Self.db_Ve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_Ve">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VIPProjectModelStoreContainer">
+          <EntitySet Name="db_Booking" EntityType="Self.db_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_Checkin" EntityType="Self.db_Checkin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_ChoNgoi" EntityType="Self.db_ChoNgoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_ChuongTrinhKhuyenMai" EntityType="Self.db_ChuongTrinhKhuyenMai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_ChuyenBay" EntityType="Self.db_ChuyenBay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_DieuKhoan" EntityType="Self.db_DieuKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_HanhKhach" EntityType="Self.db_HanhKhach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_PTTT" EntityType="Self.db_PTTT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_SanBay" EntityType="Self.db_SanBay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_User" EntityType="Self.db_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_Ve" EntityType="Self.db_Ve" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_B_CB" Association="Self.FK_B_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B_User" Association="Self.FK_B_User">
+            <End Role="db_User" EntitySet="db_User" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B_Ve" Association="Self.FK_B_Ve">
+            <End Role="db_Ve" EntitySet="db_Ve" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BK_KM" Association="Self.FK_BK_KM">
+            <End Role="db_ChuongTrinhKhuyenMai" EntitySet="db_ChuongTrinhKhuyenMai" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CK_BK" Association="Self.FK_CK_BK">
+            <End Role="db_Booking" EntitySet="db_Booking" />
+            <End Role="db_Checkin" EntitySet="db_Checkin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CK_HK" Association="Self.FK_CK_HK">
+            <End Role="db_HanhKhach" EntitySet="db_HanhKhach" />
+            <End Role="db_Checkin" EntitySet="db_Checkin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CN_CB" Association="Self.FK_CN_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_ChoNgoi" EntitySet="db_ChoNgoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HK_BK" Association="Self.FK_HK_BK">
+            <End Role="db_Booking" EntitySet="db_Booking" />
+            <End Role="db_HanhKhach" EntitySet="db_HanhKhach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KM_CB" Association="Self.FK_KM_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_ChuongTrinhKhuyenMai" EntitySet="db_ChuongTrinhKhuyenMai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KM_User" Association="Self.FK_KM_User">
+            <End Role="db_User" EntitySet="db_User" />
+            <End Role="db_ChuongTrinhKhuyenMai" EntitySet="db_ChuongTrinhKhuyenMai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_BK" Association="Self.FK_PT_BK">
+            <End Role="db_Booking" EntitySet="db_Booking" />
+            <End Role="db_PTTT" EntitySet="db_PTTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_User" Association="Self.FK_PT_User">
+            <End Role="db_User" EntitySet="db_User" />
+            <End Role="db_PTTT" EntitySet="db_PTTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SBD_SB" Association="Self.FK_SBD_SB">
+            <End Role="db_SanBay" EntitySet="db_SanBay" />
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SBDi_SB" Association="Self.FK_SBDi_SB">
+            <End Role="db_SanBay" EntitySet="db_SanBay" />
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VE_CB" Association="Self.FK_VE_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_Ve" EntitySet="db_Ve" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VIPProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="db_Booking">
+          <Key>
+            <PropertyRef Name="IDBK" />
+          </Key>
+          <Property Name="IDBK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="IDCB" Type="Int32" />
+          <Property Name="IDV" Type="Int32" />
+          <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TrangThai" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TongGia" Type="Double" Nullable="false" />
+          <Property Name="SoHanhKhack" Type="Int32" Nullable="false" />
+          <Property Name="KhuyenMai" Type="Int32" />
+          <NavigationProperty Name="db_ChuyenBay" Relationship="Self.FK_B_CB" FromRole="db_Booking" ToRole="db_ChuyenBay" />
+          <NavigationProperty Name="db_User" Relationship="Self.FK_B_User" FromRole="db_Booking" ToRole="db_User" />
+          <NavigationProperty Name="db_Ve" Relationship="Self.FK_B_Ve" FromRole="db_Booking" ToRole="db_Ve" />
+          <NavigationProperty Name="db_ChuongTrinhKhuyenMai" Relationship="Self.FK_BK_KM" FromRole="db_Booking" ToRole="db_ChuongTrinhKhuyenMai" />
+          <NavigationProperty Name="db_Checkin" Relationship="Self.FK_CK_BK" FromRole="db_Booking" ToRole="db_Checkin" />
+          <NavigationProperty Name="db_HanhKhach" Relationship="Self.FK_HK_BK" FromRole="db_Booking" ToRole="db_HanhKhach" />
+          <NavigationProperty Name="db_PTTT" Relationship="Self.FK_PT_BK" FromRole="db_Booking" ToRole="db_PTTT" />
+        </EntityType>
+        <EntityType Name="db_Checkin">
+          <Key>
+            <PropertyRef Name="IDCKin" />
+          </Key>
+          <Property Name="IDCKin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDBK" Type="Int32" />
+          <Property Name="IDHK" Type="Int32" />
+          <Property Name="GioCI" Type="DateTime" Precision="3" />
+          <Property Name="SoGhe" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_CK_BK" FromRole="db_Checkin" ToRole="db_Booking" />
+          <NavigationProperty Name="db_HanhKhach" Relationship="Self.FK_CK_HK" FromRole="db_Checkin" ToRole="db_HanhKhach" />
+        </EntityType>
+        <EntityType Name="db_ChoNgoi">
+          <Key>
+            <PropertyRef Name="IDCN" />
+          </Key>
+          <Property Name="IDCN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCB" Type="Int32" />
+          <Property Name="SoGhe" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="IDHK" Type="Int32" />
+          <NavigationProperty Name="db_ChuyenBay" Relationship="Self.FK_CN_CB" FromRole="db_ChoNgoi" ToRole="db_ChuyenBay" />
+        </EntityType>
+        <EntityType Name="db_ChuongTrinhKhuyenMai">
+          <Key>
+            <PropertyRef Name="IDKM" />
+          </Key>
+          <Property Name="IDKM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDCB" Type="Int32" />
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayKetThuc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_BK_KM" FromRole="db_ChuongTrinhKhuyenMai" ToRole="db_Booking" />
+          <NavigationProperty Name="db_ChuyenBay" Relationship="Self.FK_KM_CB" FromRole="db_ChuongTrinhKhuyenMai" ToRole="db_ChuyenBay" />
+          <NavigationProperty Name="db_User" Relationship="Self.FK_KM_User" FromRole="db_ChuongTrinhKhuyenMai" ToRole="db_User" />
+        </EntityType>
+        <EntityType Name="db_ChuyenBay">
+          <Key>
+            <PropertyRef Name="IDCB" />
+          </Key>
+          <Property Name="IDCB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoHieu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SanBayDi" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SanBayDen" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayGioKhoiHanh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayGioDen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoVeConLai" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_B_CB" FromRole="db_ChuyenBay" ToRole="db_Booking" />
+          <NavigationProperty Name="db_ChoNgoi" Relationship="Self.FK_CN_CB" FromRole="db_ChuyenBay" ToRole="db_ChoNgoi" />
+          <NavigationProperty Name="db_ChuongTrinhKhuyenMai" Relationship="Self.FK_KM_CB" FromRole="db_ChuyenBay" ToRole="db_ChuongTrinhKhuyenMai" />
+          <NavigationProperty Name="db_SanBay" Relationship="Self.FK_SBD_SB" FromRole="db_ChuyenBay" ToRole="db_SanBay" />
+          <NavigationProperty Name="db_SanBay1" Relationship="Self.FK_SBDi_SB" FromRole="db_ChuyenBay" ToRole="db_SanBay" />
+          <NavigationProperty Name="db_Ve" Relationship="Self.FK_VE_CB" FromRole="db_ChuyenBay" ToRole="db_Ve" />
+        </EntityType>
+        <EntityType Name="db_DieuKhoan">
+          <Key>
+            <PropertyRef Name="IDDK" />
+          </Key>
+          <Property Name="IDDK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="db_HanhKhach">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDBK" Type="Int32" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="Boolean" />
+          <Property Name="HoChieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_HK_BK" FromRole="db_HanhKhach" ToRole="db_Booking" />
+          <NavigationProperty Name="db_Checkin" Relationship="Self.FK_CK_HK" FromRole="db_HanhKhach" ToRole="db_Checkin" />
+        </EntityType>
+        <EntityType Name="db_PTTT">
+          <Key>
+            <PropertyRef Name="IDPT" />
+          </Key>
+          <Property Name="IDPT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="IDBK" Type="Int32" />
+          <Property Name="TenPT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_PT_BK" FromRole="db_PTTT" ToRole="db_Booking" />
+          <NavigationProperty Name="db_User" Relationship="Self.FK_PT_User" FromRole="db_PTTT" ToRole="db_User" />
+        </EntityType>
+        <EntityType Name="db_SanBay">
+          <Key>
+            <PropertyRef Name="IDSB" />
+          </Key>
+          <Property Name="IDSB" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenSB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThanhPho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="db_ChuyenBay" Relationship="Self.FK_SBD_SB" FromRole="db_SanBay" ToRole="db_ChuyenBay" />
+          <NavigationProperty Name="db_ChuyenBay1" Relationship="Self.FK_SBDi_SB" FromRole="db_SanBay" ToRole="db_ChuyenBay" />
+        </EntityType>
+        <EntityType Name="db_User">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemTichLuy" Type="Int32" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_B_User" FromRole="db_User" ToRole="db_Booking" />
+          <NavigationProperty Name="db_ChuongTrinhKhuyenMai" Relationship="Self.FK_KM_User" FromRole="db_User" ToRole="db_ChuongTrinhKhuyenMai" />
+          <NavigationProperty Name="db_PTTT" Relationship="Self.FK_PT_User" FromRole="db_User" ToRole="db_PTTT" />
+        </EntityType>
+        <EntityType Name="db_Ve">
+          <Key>
+            <PropertyRef Name="IDV" />
+          </Key>
+          <Property Name="IDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GiaVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDCB" Type="Int32" />
+          <NavigationProperty Name="db_Booking" Relationship="Self.FK_B_Ve" FromRole="db_Ve" ToRole="db_Booking" />
+          <NavigationProperty Name="db_ChuyenBay" Relationship="Self.FK_VE_CB" FromRole="db_Ve" ToRole="db_ChuyenBay" />
+        </EntityType>
+        <Association Name="FK_B_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B_User">
+          <End Role="db_User" Type="Self.db_User" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_User">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B_Ve">
+          <End Role="db_Ve" Type="Self.db_Ve" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Ve">
+              <PropertyRef Name="IDV" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="IDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BK_KM">
+          <End Role="db_ChuongTrinhKhuyenMai" Type="Self.db_ChuongTrinhKhuyenMai" Multiplicity="0..1" />
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuongTrinhKhuyenMai">
+              <PropertyRef Name="IDKM" />
+            </Principal>
+            <Dependent Role="db_Booking">
+              <PropertyRef Name="KhuyenMai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CK_BK">
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="0..1" />
+          <End Role="db_Checkin" Type="Self.db_Checkin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Booking">
+              <PropertyRef Name="IDBK" />
+            </Principal>
+            <Dependent Role="db_Checkin">
+              <PropertyRef Name="IDBK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HK_BK">
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="0..1" />
+          <End Role="db_HanhKhach" Type="Self.db_HanhKhach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Booking">
+              <PropertyRef Name="IDBK" />
+            </Principal>
+            <Dependent Role="db_HanhKhach">
+              <PropertyRef Name="IDBK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_BK">
+          <End Role="db_Booking" Type="Self.db_Booking" Multiplicity="0..1" />
+          <End Role="db_PTTT" Type="Self.db_PTTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_Booking">
+              <PropertyRef Name="IDBK" />
+            </Principal>
+            <Dependent Role="db_PTTT">
+              <PropertyRef Name="IDBK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CK_HK">
+          <End Role="db_HanhKhach" Type="Self.db_HanhKhach" Multiplicity="0..1" />
+          <End Role="db_Checkin" Type="Self.db_Checkin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_HanhKhach">
+              <PropertyRef Name="IDKH" />
+            </Principal>
+            <Dependent Role="db_Checkin">
+              <PropertyRef Name="IDHK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CN_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_ChoNgoi" Type="Self.db_ChoNgoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_ChoNgoi">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KM_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_ChuongTrinhKhuyenMai" Type="Self.db_ChuongTrinhKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_ChuongTrinhKhuyenMai">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KM_User">
+          <End Role="db_User" Type="Self.db_User" Multiplicity="0..1" />
+          <End Role="db_ChuongTrinhKhuyenMai" Type="Self.db_ChuongTrinhKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_User">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="db_ChuongTrinhKhuyenMai">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SBD_SB">
+          <End Role="db_SanBay" Type="Self.db_SanBay" Multiplicity="1" />
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_SanBay">
+              <PropertyRef Name="IDSB" />
+            </Principal>
+            <Dependent Role="db_ChuyenBay">
+              <PropertyRef Name="SanBayDen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SBDi_SB">
+          <End Role="db_SanBay" Type="Self.db_SanBay" Multiplicity="1" />
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_SanBay">
+              <PropertyRef Name="IDSB" />
+            </Principal>
+            <Dependent Role="db_ChuyenBay">
+              <PropertyRef Name="SanBayDi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VE_CB">
+          <End Role="db_ChuyenBay" Type="Self.db_ChuyenBay" Multiplicity="0..1" />
+          <End Role="db_Ve" Type="Self.db_Ve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_ChuyenBay">
+              <PropertyRef Name="IDCB" />
+            </Principal>
+            <Dependent Role="db_Ve">
+              <PropertyRef Name="IDCB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_User">
+          <End Role="db_User" Type="Self.db_User" Multiplicity="0..1" />
+          <End Role="db_PTTT" Type="Self.db_PTTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="db_User">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="db_PTTT">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VIPProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="db_Booking" EntityType="Self.db_Booking" />
+          <EntitySet Name="db_Checkin" EntityType="Self.db_Checkin" />
+          <EntitySet Name="db_ChoNgoi" EntityType="Self.db_ChoNgoi" />
+          <EntitySet Name="db_ChuongTrinhKhuyenMai" EntityType="Self.db_ChuongTrinhKhuyenMai" />
+          <EntitySet Name="db_ChuyenBay" EntityType="Self.db_ChuyenBay" />
+          <EntitySet Name="db_DieuKhoan" EntityType="Self.db_DieuKhoan" />
+          <EntitySet Name="db_HanhKhach" EntityType="Self.db_HanhKhach" />
+          <EntitySet Name="db_PTTT" EntityType="Self.db_PTTT" />
+          <EntitySet Name="db_SanBay" EntityType="Self.db_SanBay" />
+          <EntitySet Name="db_User" EntityType="Self.db_User" />
+          <EntitySet Name="db_Ve" EntityType="Self.db_Ve" />
+          <AssociationSet Name="FK_B_CB" Association="Self.FK_B_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B_User" Association="Self.FK_B_User">
+            <End Role="db_User" EntitySet="db_User" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B_Ve" Association="Self.FK_B_Ve">
+            <End Role="db_Ve" EntitySet="db_Ve" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BK_KM" Association="Self.FK_BK_KM">
+            <End Role="db_ChuongTrinhKhuyenMai" EntitySet="db_ChuongTrinhKhuyenMai" />
+            <End Role="db_Booking" EntitySet="db_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CK_BK" Association="Self.FK_CK_BK">
+            <End Role="db_Booking" EntitySet="db_Booking" />
+            <End Role="db_Checkin" EntitySet="db_Checkin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HK_BK" Association="Self.FK_HK_BK">
+            <End Role="db_Booking" EntitySet="db_Booking" />
+            <End Role="db_HanhKhach" EntitySet="db_HanhKhach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_BK" Association="Self.FK_PT_BK">
+            <End Role="db_Booking" EntitySet="db_Booking" />
+            <End Role="db_PTTT" EntitySet="db_PTTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CK_HK" Association="Self.FK_CK_HK">
+            <End Role="db_HanhKhach" EntitySet="db_HanhKhach" />
+            <End Role="db_Checkin" EntitySet="db_Checkin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CN_CB" Association="Self.FK_CN_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_ChoNgoi" EntitySet="db_ChoNgoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KM_CB" Association="Self.FK_KM_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_ChuongTrinhKhuyenMai" EntitySet="db_ChuongTrinhKhuyenMai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KM_User" Association="Self.FK_KM_User">
+            <End Role="db_User" EntitySet="db_User" />
+            <End Role="db_ChuongTrinhKhuyenMai" EntitySet="db_ChuongTrinhKhuyenMai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SBD_SB" Association="Self.FK_SBD_SB">
+            <End Role="db_SanBay" EntitySet="db_SanBay" />
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SBDi_SB" Association="Self.FK_SBDi_SB">
+            <End Role="db_SanBay" EntitySet="db_SanBay" />
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VE_CB" Association="Self.FK_VE_CB">
+            <End Role="db_ChuyenBay" EntitySet="db_ChuyenBay" />
+            <End Role="db_Ve" EntitySet="db_Ve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_User" Association="Self.FK_PT_User">
+            <End Role="db_User" EntitySet="db_User" />
+            <End Role="db_PTTT" EntitySet="db_PTTT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VIPProjectModelStoreContainer" CdmEntityContainer="VIPProjectEntities">
+          <EntitySetMapping Name="db_Booking">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_Booking">
+              <MappingFragment StoreEntitySet="db_Booking">
+                <ScalarProperty Name="IDBK" ColumnName="IDBK" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IDCB" ColumnName="IDCB" />
+                <ScalarProperty Name="IDV" ColumnName="IDV" />
+                <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="TongGia" ColumnName="TongGia" />
+                <ScalarProperty Name="SoHanhKhack" ColumnName="SoHanhKhack" />
+                <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_Checkin">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_Checkin">
+              <MappingFragment StoreEntitySet="db_Checkin">
+                <ScalarProperty Name="IDCKin" ColumnName="IDCKin" />
+                <ScalarProperty Name="IDBK" ColumnName="IDBK" />
+                <ScalarProperty Name="IDHK" ColumnName="IDHK" />
+                <ScalarProperty Name="GioCI" ColumnName="GioCI" />
+                <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_ChoNgoi">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_ChoNgoi">
+              <MappingFragment StoreEntitySet="db_ChoNgoi">
+                <ScalarProperty Name="IDCN" ColumnName="IDCN" />
+                <ScalarProperty Name="IDCB" ColumnName="IDCB" />
+                <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="IDHK" ColumnName="IDHK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_ChuongTrinhKhuyenMai">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_ChuongTrinhKhuyenMai">
+              <MappingFragment StoreEntitySet="db_ChuongTrinhKhuyenMai">
+                <ScalarProperty Name="IDKM" ColumnName="IDKM" />
+                <ScalarProperty Name="TenKM" ColumnName="TenKM" />
+                <ScalarProperty Name="IDCB" ColumnName="IDCB" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_ChuyenBay">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_ChuyenBay">
+              <MappingFragment StoreEntitySet="db_ChuyenBay">
+                <ScalarProperty Name="IDCB" ColumnName="IDCB" />
+                <ScalarProperty Name="SoHieu" ColumnName="SoHieu" />
+                <ScalarProperty Name="SanBayDi" ColumnName="SanBayDi" />
+                <ScalarProperty Name="SanBayDen" ColumnName="SanBayDen" />
+                <ScalarProperty Name="NgayGioKhoiHanh" ColumnName="NgayGioKhoiHanh" />
+                <ScalarProperty Name="NgayGioDen" ColumnName="NgayGioDen" />
+                <ScalarProperty Name="SoVeConLai" ColumnName="SoVeConLai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_DieuKhoan">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_DieuKhoan">
+              <MappingFragment StoreEntitySet="db_DieuKhoan">
+                <ScalarProperty Name="IDDK" ColumnName="IDDK" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_HanhKhach">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_HanhKhach">
+              <MappingFragment StoreEntitySet="db_HanhKhach">
+                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+                <ScalarProperty Name="IDBK" ColumnName="IDBK" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="HoChieu" ColumnName="HoChieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_PTTT">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_PTTT">
+              <MappingFragment StoreEntitySet="db_PTTT">
+                <ScalarProperty Name="IDPT" ColumnName="IDPT" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDBK" ColumnName="IDBK" />
+                <ScalarProperty Name="TenPT" ColumnName="TenPT" />
+                <ScalarProperty Name="ChiTiet" ColumnName="ChiTiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_SanBay">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_SanBay">
+              <MappingFragment StoreEntitySet="db_SanBay">
+                <ScalarProperty Name="IDSB" ColumnName="IDSB" />
+                <ScalarProperty Name="TenSB" ColumnName="TenSB" />
+                <ScalarProperty Name="ThanhPho" ColumnName="ThanhPho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_User">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_User">
+              <MappingFragment StoreEntitySet="db_User">
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="TenUser" ColumnName="TenUser" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DiemTichLuy" ColumnName="DiemTichLuy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_Ve">
+            <EntityTypeMapping TypeName="VIPProjectModel.db_Ve">
+              <MappingFragment StoreEntitySet="db_Ve">
+                <ScalarProperty Name="IDV" ColumnName="IDV" />
+                <ScalarProperty Name="LoaiVe" ColumnName="LoaiVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="IDCB" ColumnName="IDCB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

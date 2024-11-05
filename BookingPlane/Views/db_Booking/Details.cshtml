@@ -1,0 +1,83 @@
+﻿@model BookingPlane.Models.db_Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>db_Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoHanhKhack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHanhKhack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_ChuyenBay.SoHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_ChuyenBay.SoHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_User.TenUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_User.TenUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_Ve.LoaiVe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_Ve.LoaiVe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_ChuongTrinhKhuyenMai.TenKM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_ChuongTrinhKhuyenMai.TenKM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDBK }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,67 @@
+﻿@model BookingPlane.Models.db_ChuyenBay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>db_ChuyenBay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayGioKhoiHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGioKhoiHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayGioDen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGioDen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoVeConLai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoVeConLai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_SanBay.TenSB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_SanBay.TenSB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_SanBay1.TenSB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_SanBay1.TenSB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCB }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

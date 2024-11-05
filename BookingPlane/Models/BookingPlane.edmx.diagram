@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ba1741ef78a4dad821e525ebe7a920a" Name="Diagram1">
+        <EntityTypeShape EntityType="VIPProjectModel.db_Booking" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_Checkin" Width="1.5" PointX="8.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_ChoNgoi" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_ChuongTrinhKhuyenMai" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_ChuyenBay" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_DieuKhoan" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_HanhKhach" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_PTTT" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_SanBay" Width="1.5" PointX="1.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_User" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPProjectModel.db_Ve" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="VIPProjectModel.FK_B_CB" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_B_User" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_B_Ve" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_BK_KM" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_CK_BK" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_HK_BK" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_PT_BK" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_CK_HK" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_CN_CB" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_KM_CB" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_KM_User" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_SBD_SB" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_SBDi_SB" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_VE_CB" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPProjectModel.FK_PT_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

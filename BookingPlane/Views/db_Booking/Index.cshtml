@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BookingPlane.Models.db_Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoHanhKhack)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_ChuyenBay.SoHieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_User.TenUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_Ve.LoaiVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_ChuongTrinhKhuyenMai.TenKM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoHanhKhack)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db_ChuyenBay.SoHieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db_User.TenUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db_Ve.LoaiVe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db_ChuongTrinhKhuyenMai.TenKM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDBK }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDBK }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDBK })
+        </td>
+    </tr>
+}
+
+</table>

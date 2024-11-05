@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="headers">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color:darkblue;">
+            <div class="container-fluid">
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand ms-3"><img src="~/Content/Images/VIP.png" alt="VIP AirLines" class="rounded-circle" style="width:100px;height:50px;" id="logo" /></a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav primary-nav desktop-nav m-2">
+                        <li class="nav-item m-1">
+                            <div class="dropdown">
+                                <a role="button" aria-haspopup="true" aria-expanded="false" data-list-type="Mega Menu" data-content-type="Navigation" href="@Url.Action("Index", "Home")" class="nav-link active" style="color: white">Home</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" data-list-type="Mega Menu" data-content-type="Navigation" href="#">123</a></li>
+                                    <li><a class="nav-link" data-list-type="Mega Menu" data-content-type="Navigation" href="#">546</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item m-1">
+                            <div class="dropdown">
+                                <a role="button" aria-haspopup="true" aria-expanded="false" data-list-type="Mega Menu" data-content-type="Navigation" href="@Url.Action("About", "Home")" class="nav-link active" style="color: white">About</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" data-list-type="Mega Menu" data-content-type="Navigation" href="#">123</a></li>
+                                    <li><a class="nav-link" data-list-type="Mega Menu" data-content-type="Navigation" href="#">546</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item m-1">
+                            <div class="dropdown">
+                                <a role="button" aria-haspopup="true" aria-expanded="false" data-list-type="Mega Menu" data-content-type="Navigation" href="@Url.Action("Contact", "Home")" class="nav-link active" style="color: white">Contact</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" data-list-type="Mega Menu" data-content-type="Navigation" href="#">123</a></li>
+                                    <li><a class="nav-link" data-list-type="Mega Menu" data-content-type="Navigation" href="#">546</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <footer style="background-color:darkblue;padding:20px;color:white">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <h5>VipAirlines</h5>
+                    <ul>
+                        <li>
+                            <a href="#" class="nav-link">Giới thiệu hãng</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">Thông tin truyền thông</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h5> Pháp lý</h5>
+                    <ul>
+                        <li>
+                            <a href="#" class="nav-link">Các điều kiện & điều khoản</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">Bảo mật thông tin</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h5> Hỗ trợ </h5>
+                    <ul>
+                        <li>
+                            <a href="#" class="nav-link">Chăm sóc khách hàng</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">Chính sách bảo vệ khách khàng</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h5>Thông tin liên hệ </h5>
+                    <ul>
+                        <li>
+                            Email :
+                        </li>
+                        <li>
+                            SĐT :
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

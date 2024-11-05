@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BookingPlane.Models.db_ChuyenBay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SoHieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGioKhoiHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGioDen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoVeConLai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_SanBay.TenSB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_SanBay1.TenSB)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoHieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGioKhoiHanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGioDen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoVeConLai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db_SanBay.TenSB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db_SanBay1.TenSB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCB }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCB }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCB })
+        </td>
+    </tr>
+}
+
+</table>
